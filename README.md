@@ -6,6 +6,7 @@ Proyek ini adalah implementasi **MLOps pipeline** untuk memprediksi profit mengg
 
 ## ⚡ Instalasi dan Setup Lokal
 
+
 Clone repository:
 
 ```bash
@@ -20,7 +21,14 @@ docker build -t ml-api .
 
 docker run -p 8000:8000 ml-api
 
-Cara Menggunakan API
+
+Endpoint utama: /predict (POST)
+
+Kamu bisa mengirim Request JSON berisi data fitur, lalu mendapatkan prediksi profit sebagai response.
+
+Contoh ilustrasi request dan response:
+
+![Contoh Request dan Response](assets/prediction.jpg)
 
 
 
