@@ -1,0 +1,18 @@
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/superstore.csv
+      - params.yaml
+    outs:
+      - model/model.joblib
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - model/model.joblib
+      - data/superstore.csv
+    metrics:
+      - metrics.json

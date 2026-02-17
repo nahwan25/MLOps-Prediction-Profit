@@ -1,0 +1,42 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/superstore.csv
+      hash: md5
+      md5: 9898cfbe6f52fb9a4d2a39852a2d4fd2
+      size: 2288581
+    - path: params.yaml
+      hash: md5
+      md5: 1a7ada591bef8df849d8b16a3aeac1d4
+      size: 77
+    - path: src/train.py
+      hash: md5
+      md5: 681154b2d60df2fbd44774a200422c0e
+      size: 1985
+    outs:
+    - path: model/model.joblib
+      hash: md5
+      md5: ebf3b3676eb086618417998a286630f7
+      size: 91441
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/superstore.csv
+      hash: md5
+      md5: 9898cfbe6f52fb9a4d2a39852a2d4fd2
+      size: 2288581
+    - path: model/model.joblib
+      hash: md5
+      md5: ebf3b3676eb086618417998a286630f7
+      size: 91441
+    - path: src/evaluate.py
+      hash: md5
+      md5: e3057b89141718c2567b1ed7b7af51c8
+      size: 1317
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: ea342c2fc08c8ff9fede51149f4e42df
+      size: 53

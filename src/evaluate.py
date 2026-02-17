@@ -1,30 +1,54 @@
+import json
 import pandas as pd
 import joblib
-import numpy as np
-import json
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import mean_absolute_error, r2_score
 
+# ===============================
+# 1️⃣ Load Model
+# ===============================
+model = joblib.load("model/model.joblib")
+
+# ===============================
+# 2️⃣ Load Data
+# ===============================
 df = pd.read_csv("data/superstore.csv")
 
-df['UnitPrice'] = df['Sales'] / df['Quantity']
+# ===============================
+# 3️⃣ Feature Engineering
+# ===============================
+df["UnitPrice"] = df["Sales"] / df["Quantity"]
 
-features = ['UnitPrice', 'Discount', 'Quantity']
-target = 'Profit'
+# Handle infinite values
+df.replace([float("inf"), -float("inf")], pd.NA, inplace=True)
+
+# Drop rows where target missing
+df = df.dropna(subset=["Profit"])
+
+features = ["UnitPrice", "Discount", "Quantity"]
+target = "Profit"
 
 X = df[features]
 y = df[target]
 
-model = joblib.load("model/model.joblib")
-
+# ===============================
+# 4️⃣ Predict
+# ===============================
 y_pred = model.predict(X)
 
+# ===============================
+# 5️⃣ Metrics
+# ===============================
 metrics = {
     "MAE": mean_absolute_error(y, y_pred),
-    "RMSE": np.sqrt(mean_squared_error(y, y_pred)),
     "R2": r2_score(y, y_pred)
 }
 
-with open("metrics.json", "w") as f:
-    json.dump(metrics, f, indent=4)
+print(metrics)
 
-print("✅ Evaluation completed.")
+# ===============================
+# 6️⃣ Save metrics
+# ===============================
+with open("metrics.json", "w") as f:
+    json.dump(metrics, f)
+
+print("✅ Evaluation completed!")
