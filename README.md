@@ -4,14 +4,9 @@ Proyek ini adalah implementasi **MLOps pipeline** untuk memprediksi profit mengg
 
 ---
 
-## 📂 Struktur Project
-
-
----
-
 ## ⚡ Instalasi dan Setup Lokal
 
-1. Clone repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/nahwan25/MLOps-Prediction-Profit.git
@@ -24,4 +19,8 @@ uvicorn app.app:app --reload
 docker build -t ml-api .
 
 docker run -p 8000:8000 ml-api
+
+Cara Menggunakan API
+
+
 
