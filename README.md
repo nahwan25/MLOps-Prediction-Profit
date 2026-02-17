@@ -26,9 +26,5 @@ Endpoint utama: /predict (POST)
 
 Kamu bisa mengirim Request JSON berisi data fitur, lalu mendapatkan prediksi profit sebagai response.
 
-Contoh ilustrasi request dan response:
-
-![Contoh Request dan Response](assets/prediction.jpg)
-
 
 
