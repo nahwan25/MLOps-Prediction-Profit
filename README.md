@@ -25,7 +25,11 @@ Main components:
 - Docker for containerization
 - GitHub Actions for CI
 
-📂 Project Structure
+````markdown
+## 📂 Project Structure
+
+```bash
+.
 ├── data/                # Raw and processed datasets (tracked by DVC)
 ├── model/               # Trained model artifacts
 ├── src/                 # Training & preprocessing scripts
